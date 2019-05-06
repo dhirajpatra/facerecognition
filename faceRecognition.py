@@ -68,7 +68,7 @@ def draw_rect(test_img, face):
 
 # Below function writes name of person for detected label
 def put_text(test_img, text, x, y):
-    cv2.putText(test_img, text, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 1.5, (0, 255, 255), 3)
+    cv2.putText(test_img, text, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 3)
 
 
 
