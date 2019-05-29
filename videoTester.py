@@ -9,8 +9,8 @@ face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 face_recognizer.read('trainingData.yml')    # Load saved training data
 
 # people to be recognized
-# name = {0: "Priyanka", 1: "Kangana", 2: "Dhiraj", 3: "Om", 4: "Alovia"}
-name = {0: "", 1: "", 2: "Dhiraj", 3: "Om", 4: ""}
+name = {0: "Priyanka", 1: "Kangana", 2: "Dhiraj", 3: "Om", 4: "Tanushree"}
+# name = {0: "", 1: "", 2: "Dhiraj", 3: "Om", 4: ""}
 
 
 cap = cv2.VideoCapture(0)
@@ -19,12 +19,12 @@ while True:
     ret, test_img = cap.read()  # captures frame and returns boolean value and captured image
     faces_detected, gray_img = fr.faceDetection(test_img)
 
-    for (x, y, w, h) in faces_detected:
-        cv2.rectangle(test_img, (x, y), (x + w, y + h), (255, 0, 0), thickness=7)
-
-    resized_img = cv2.resize(test_img, (800, 800))
-    cv2.imshow('face detection Tutorial ', resized_img)
-    cv2.waitKey(10)
+    # for (x, y, w, h) in faces_detected:
+    #     cv2.rectangle(test_img, (x, y), (x + w, y + h), (255, 0, 0), thickness=7)
+    #
+    # resized_img = cv2.resize(test_img, (800, 800))
+    # cv2.imshow('face detection Tutorial ', resized_img)
+    # cv2.waitKey(10)
 
     for face in faces_detected:
         (x, y, w, h) = face
@@ -35,7 +35,7 @@ while True:
         fr.draw_rect(test_img, face)
         predicted_name = name[label]
         # If confidence greater than 37 then don't print predicted face text on screen means 62%
-        if confidence < 39:
+        if confidence < 50:
            fr.put_text(test_img, predicted_name, x, y)
 
     resized_img = cv2.resize(test_img, (800, 800))
