@@ -4,8 +4,7 @@ import numpy as np
 
 # This module contains all common functions that are called in tester.py file
 
-
-# Given an image below function returns rectangle for face detected alongwith gray scale image
+# Given an image below function returns rectangle for face detected along with gray scale image
 def faceDetection(test_img):
     # convert color image to grayscale
     gray_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2GRAY)
@@ -17,7 +16,7 @@ def faceDetection(test_img):
     return faces, gray_img
 
 
-# Given a directory below function returns part of gray_img which is face alongwith its label/ID
+# Given a directory below function returns part of gray_img which is face along with its label/ID
 def labels_for_training_data(directory, name):
     faces = []
     faceID = []
@@ -63,12 +62,12 @@ def train_classifier(faces, faceID):
 # Below function draws bounding boxes around detected face in image
 def draw_rect(test_img, face):
     (x, y, w, h) = face
-    cv2.rectangle(test_img, (x, y), (x + w, y + h), (255, 0, 0), thickness=5)
+    cv2.rectangle(test_img, (x, y), (x + w, y + h), (255, 0, 0), thickness=3)
 
 
 # Below function writes name of person for detected label
 def put_text(test_img, text, x, y):
-    cv2.putText(test_img, text, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 3)
+    cv2.putText(test_img, text, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, .7, (0, 255, 255), 2)
 
 
 
