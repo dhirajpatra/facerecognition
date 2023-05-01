@@ -6,7 +6,7 @@ import faceRecognition as fr
 
 # This module takes images  stored in disk and performs face recognition
 confidence_level = 39  # (100 - confidence_level)% match
-test_person = 'Priyanka'
+test_person = 'Om'
 test_img = cv2.imread('TestImages/' + test_person + '.jpg')      # test_img path
 faces_detected, gray_img = fr.faceDetection(test_img)
 print("faces_detected:", faces_detected)

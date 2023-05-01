@@ -2,6 +2,13 @@ import cv2
 import os
 import numpy as np
 
+
+# Set font type, font scale, color, and thickness
+font = cv2.FONT_HERSHEY_SIMPLEX
+font_scale = 2
+font_color = (0, 0, 255) # BGR color format
+font_thickness = 3
+
 # This module contains all common functions that are called in tester.py file
 
 # Given an image below function returns rectangle for face detected along with gray scale image
@@ -9,7 +16,9 @@ def faceDetection(test_img):
     # convert color image to grayscale
     gray_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2GRAY)
     # Load haar classifier
-    face_haar_cascade = cv2.CascadeClassifier('HaarCascade/haarcascade_frontalface_default.xml')
+    harr_cascade_model = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+    # harr_cascade_model = cv2.data.haarcascades + 'haarcascade_frontalface.xml'
+    face_haar_cascade = cv2.CascadeClassifier(harr_cascade_model)
     # detectMultiScale returns rectangles
     faces = face_haar_cascade.detectMultiScale(gray_img, scaleFactor=1.32, minNeighbors=5)
 
@@ -67,7 +76,7 @@ def draw_rect(test_img, face):
 
 # Below function writes name of person for detected label
 def put_text(test_img, text, x, y):
-    cv2.putText(test_img, text, (x, y - 5), cv2.FONT_HERSHEY_DUPLEX, .7, (0, 255, 255), 2)
+    cv2.putText(test_img, text, (x, y - 5), font, font_scale, font_color, font_thickness)
 
 
 
