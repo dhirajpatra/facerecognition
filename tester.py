@@ -16,14 +16,14 @@ name = {0: "Priyanka", 1: "Kangana", 2: "Dhiraj", 3: "Om", 4: "Tanushree"}
 # name = {0: "", 1: "", 2: "Dhiraj", 3: "Om", 4: "Tanushree"}
 
 
-# # Comment belows lines when running this program second time.
-# # Since it saves training.yml file in directory
-# faces, faceID = fr.labels_for_training_data('trainingImages', name)
-# face_recognizer = fr.train_classifier(faces, faceID)
-# # remove existing training yml
-# if os.path.exists('trainingData.yml'):
-#     os.remove('trainingData.yml')
-# face_recognizer.write('trainingData.yml')
+# Comment belows lines when running this program second time.
+# Since it saves training.yml file in directory
+faces, faceID = fr.labels_for_training_data('trainingImages', name)
+face_recognizer = fr.train_classifier(faces, faceID)
+# remove existing training yml
+if os.path.exists('trainingData.yml'):
+    os.remove('trainingData.yml')
+face_recognizer.write('trainingData.yml')
 
 
 # Uncomment below line for subsequent runs
