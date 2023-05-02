@@ -5,15 +5,14 @@ import faceRecognition as fr
 
 
 # This module takes images  stored in disk and performs face recognition
-confidence_level = 39  # (100 - confidence_level)% match
+confidence_level = 100  # (100 - confidence_level)% match
 test_person = 'Om'
 test_img = cv2.imread('TestImages/' + test_person + '.jpg')      # test_img path
 faces_detected, gray_img = fr.faceDetection(test_img)
 print("faces_detected:", faces_detected)
 
 # creating dictionary containing names for each label
-name = {0: "Priyanka", 1: "Kangana", 2: "Dhiraj", 3: "Om", 4: "Tanushree"}
-# name = {0: "", 1: "", 2: "Dhiraj", 3: "Om", 4: "Tanushree"}
+name = {0: "Dhiraj", 1: "Om", 2: "Tanushree"}
 
 
 # Comment belows lines when running this program second time.
@@ -27,8 +26,13 @@ face_recognizer.write('trainingData.yml')
 
 
 # Uncomment below line for subsequent runs
-face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+# below for cv 4.5.5
+# face_recognizer = cv2.face.createLBPHFaceRecognizer()
+face_recognizer = cv2.face.LBPHFaceRecognizer.create()
 # use this to load training data for subsequent runs
+# print(dir(face_recognizer))
+# below for cv 4.5.5
+# face_recognizer.load('trainingData.yml')
 face_recognizer.read('trainingData.yml')
 
 for face in faces_detected:

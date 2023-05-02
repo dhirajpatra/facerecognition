@@ -4,13 +4,13 @@ import numpy as np
 import faceRecognition as fr
 
 
+confidence_level = 65
 # This module captures images via webcam and performs face recognition
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 face_recognizer.read('trainingData.yml')    # Load saved training data
 
 # people to be recognized
-name = {0: "Priyanka", 1: "Kangana", 2: "Dhiraj", 3: "Om", 4: "Tanushree"}
-# name = {0: "", 1: "", 2: "Dhiraj", 3: "Om", 4: ""}
+name = {0: "Dhiraj", 1: "Om", 2: "Tanushree"}
 
 
 cap = cv2.VideoCapture(0)
@@ -35,8 +35,10 @@ while True:
         fr.draw_rect(test_img, face)
         predicted_name = name[label]
         # If confidence greater than 37 then don't print predicted face text on screen means 62%
-        if confidence < 50:
-           fr.put_text(test_img, predicted_name, x, y)
+        if confidence < confidence_level:
+            fr.put_text(test_img, predicted_name, x, y)
+        else:
+            continue
 
     resized_img = cv2.resize(test_img, (800, 800))
     cv2.imshow('face recognition tutorial ', resized_img)

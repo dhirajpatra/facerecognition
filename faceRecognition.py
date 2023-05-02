@@ -16,7 +16,7 @@ def faceDetection(test_img):
     # convert color image to grayscale
     gray_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2GRAY)
     # Load haar classifier
-    harr_cascade_model = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+    harr_cascade_model = 'HaarCascade/haarcascade_frontalface_default.xml'
     # harr_cascade_model = cv2.data.haarcascades + 'haarcascade_frontalface.xml'
     face_haar_cascade = cv2.CascadeClassifier(harr_cascade_model)
     # detectMultiScale returns rectangles
