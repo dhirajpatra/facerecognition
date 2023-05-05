@@ -4,9 +4,10 @@ import numpy as np
 import faceRecognition as fr
 
 
-confidence_level = 65
+confidence_level = 50
 # This module captures images via webcam and performs face recognition
-face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+# face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+face_recognizer = cv2.face.LBPHFaceRecognizer.create()
 face_recognizer.read('trainingData.yml')    # Load saved training data
 
 # people to be recognized

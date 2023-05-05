@@ -1,0 +1,11 @@
+argparse
+numpy>=1.20.0  # To ensure compatibility with OpenCV on Raspberry Pi.
+opencv-python   
+tflite-support>=0.4.2
+protobuf>=3.18.0,<4
+mail
+python-dotenv
+flask
+Pillow
+imutils
+dlib

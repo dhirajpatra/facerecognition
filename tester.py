@@ -2,32 +2,39 @@ import cv2
 import os
 import numpy as np
 import faceRecognition as fr
-
+# from faceRecognition import FaceAligner
+from imutils.face_utils import FaceAligner
+from imutils.face_utils import rect_to_bb
+import argparse
+import imutils
+import dlib
 
 # This module takes images  stored in disk and performs face recognition
-confidence_level = 100  # (100 - confidence_level)% match
-test_person = 'Om'
-test_img = cv2.imread('TestImages/' + test_person + '.jpg')      # test_img path
+confidence_level = 70  # (100 - confidence_level)% match
+test_person = 'Tanushree2'
+test_img = cv2.imread('TestImages/' + test_person + '.jpg')  # test_img path
+test_img = imutils.resize(test_img, width=800)
+# gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 faces_detected, gray_img = fr.faceDetection(test_img)
 print("faces_detected:", faces_detected)
 
 # creating dictionary containing names for each label
 name = {0: "Dhiraj", 1: "Om", 2: "Tanushree"}
 
-
-# Comment belows lines when running this program second time.
-# Since it saves training.yml file in directory
-faces, faceID = fr.labels_for_training_data('trainingImages', name)
-face_recognizer = fr.train_classifier(faces, faceID)
-# remove existing training yml
-if os.path.exists('trainingData.yml'):
-    os.remove('trainingData.yml')
-face_recognizer.write('trainingData.yml')
+# # Comment belows lines when running this program second time.
+# # Since it saves training.yml file in directory
+# faces, faceID = fr.labels_for_training_data('trainingImages', name)
+# face_recognizer = fr.train_classifier(faces, faceID)
+# # remove existing training yml
+# if os.path.exists('trainingData.yml'):
+#     os.remove('trainingData.yml')
+# face_recognizer.write('trainingData.yml')
 
 
 # Uncomment below line for subsequent runs
 # below for cv 4.5.5
 # face_recognizer = cv2.face.createLBPHFaceRecognizer()
+# face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 face_recognizer = cv2.face.LBPHFaceRecognizer.create()
 # use this to load training data for subsequent runs
 # print(dir(face_recognizer))
@@ -59,8 +66,3 @@ cv2.imshow("face detection tutorial", resized_img)
 # Waits indefinitely until a key is pressed
 cv2.waitKey(0)
 cv2.destroyAllWindows
-
-
-
-
-
