@@ -2,13 +2,12 @@ import cv2
 import os
 import numpy as np
 import math
-import matplotlib.pyplot as pl
-import pandas as pd
+# import pandas as pd
 from PIL import Image
 
 
 # Set font type, font scale, color, and thickness
-font = cv2.FONT_HERSHEY_SIMPLEX
+# font = cv2.FONT_HERSHEY_SIMPLEX
 font_scale = 2
 font_color = (0, 0, 255)  # BGR color format
 font_thickness = 3
@@ -148,8 +147,8 @@ def labels_for_training_data(directory, name):
                 continue
 
             # Calling faceDetection function to return faces detected in particular image
-            # faces_rect, gray_img = faceDetection(test_img)
-            faces_rect, gray_img = faceAlignment(test_img)
+            faces_rect, gray_img = faceDetection(test_img)
+            # faces_rect, gray_img = faceAlignment(test_img)
             if len(faces_rect) != 1:
                 continue  # Since we are assuming only single person images are being fed to classifier
             (x, y, w, h) = faces_rect[0]
