@@ -91,7 +91,7 @@ def run(model_path, camera_id, width, height, num_threads, enable_edgetpu):
 
         cat_details = dict(sorted(cat_details.items(), key=lambda x: x[1], reverse=True))
         # print(cat_details)
-
+        
         output_details = []
         for k, v in cat_details.items():
             output_details.append({"key": k, "score": v})
